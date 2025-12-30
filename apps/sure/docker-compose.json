@@ -24,6 +24,7 @@
         { "key": "RAILS_ENV", "value": "production" },
         { "key": "NODE_ENV", "value": "production" },
         { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
+        { "key": "HTTPS", "value": "false" },
         
         { "key": "RAILS_FORCE_SSL", "value": "false" },
         { "key": "FORCE_SSL", "value": "false" },
