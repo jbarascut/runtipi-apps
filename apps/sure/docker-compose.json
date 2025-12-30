@@ -18,7 +18,9 @@
         { "key": "SECRET_KEY_BASE", "value": "${SECRET_KEY_BASE}" },
         { "key": "SELF_HOSTED", "value": "true" },
         { "key": "RAILS_ENV", "value": "production" },
-        { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" }
+        { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
+        { "key": "SECURE_COOKIES", "value": "false" },
+        { "key": "FORCE_SSL", "value": "false" }
       ],
       "volumes": [
         {
