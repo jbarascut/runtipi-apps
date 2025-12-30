@@ -19,20 +19,15 @@
         { "key": "SELF_HOSTED", "value": "true" },
         { "key": "RAILS_ENV", "value": "production" },
         { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
-        { "key": "SECURE_COOKIES", "value": "false" },
         { "key": "FORCE_SSL", "value": "false" },
         { "key": "RAILS_FORCE_SSL", "value": "false" },
-        { "key": "HTTP_X_FORWARDED_PROTO", "value": "http" },
-        { "key": "HTTP_X_FORWARDED_PORT", "value": "3000" },
-        { "key": "HTTP_X_FORWARDED_SSL", "value": "off" },
+        { "key": "SECURE_COOKIES", "value": "false" },
         { "key": "APP_URL", "value": "http://192.168.1.141:3000" },
-        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000" }
+        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000,http://192.168.1.141" },
+        { "key": "RAILS_TRUSTED_PROXIES", "value": "127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" }
       ],
       "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/storage",
-          "containerPath": "/rails/storage"
-        }
+        { "hostPath": "${APP_DATA_DIR}/storage", "containerPath": "/rails/storage" }
       ],
       "dependsOn": ["sure-db", "sure-redis"]
     },
@@ -45,10 +40,7 @@
         { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" }
       ],
       "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/db",
-          "containerPath": "/var/lib/postgresql/data"
-        }
+        { "hostPath": "${APP_DATA_DIR}/db", "containerPath": "/var/lib/postgresql/data" }
       ]
     },
     {
