@@ -27,7 +27,9 @@
       "description": "Générez une clé via 'openssl rand -hex 64'",
       "placeholder": "Collez ici une longue suite de caractères hexadécimaux",
       "required": true,
-      "env_variable": "SECRET_KEY_BASE"
+      "env_variable": "SECRET_KEY_BASE",
+      "min": 64,
+      "max": 128
     }
   ]
 }
