@@ -1,0 +1,42 @@
+version: "3.9"
+services:
+  sure-app:
+    image: ghcr.io/we-promise/sure:latest
+    restart: unless-stopped
+    # Labels officiels Runtipi pour Traefik
+    labels:
+      - "tipi.exposed=true"
+      - "tipi.port=3000"
+    environment:
+      - DB_HOST=sure-db
+      - DB_USER=sure
+      - DB_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - REDIS_URL=redis://sure-redis:6379/1
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - SELF_HOSTED=true
+      - RAILS_ENV=production
+      - RAILS_SERVE_STATIC_FILES=true
+      # Fix pour les erreurs d'authenticité (CSRF/SSL)
+      - FORCE_SSL=false
+      - RAILS_FORCE_SSL=false
+      - SECURE_COOKIES=false
+      - TRUSTED_PROXIES=127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+      - CSRF_TRUSTED_ORIGINS=http://192.168.1.141:3000,http://192.168.1.141
+    depends_on:
+      - sure-db
+      - sure-redis
+
+  sure-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=sure_production
+      - POSTGRES_USER=sure
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ${APP_DATA_DIR}/db:/var/lib/postgresql/data
+
+  sure-redis:
+    image: redis:7-alpine
+    restart: unless-stopped
