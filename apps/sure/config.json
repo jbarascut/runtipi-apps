@@ -1,24 +1,25 @@
 {
-  "name": "sure",
+  "name": "Sure",
   "id": "sure",
-  "available": true,
-  "short_desc": "The personal finance app for everyone",
-  "author": "sure",
+  "description": "Fork de Maybe Finance pour la gestion de finances personnelles.",
+  "short_desc": "Gestionnaire de patrimoine open-source.",
+  "categories": ["finance"],
+  "version": "1.0.0",
   "port": 3000,
-  "categories": [
-    "finance"
-  ],
-  "description": "The personal finance app for everyone",
-  "tipi_version": 2,
-  "version": "v0.6.6-alpha.7",
-  "source": "https://github.com/we-promise/sure",
   "exposable": true,
-  "supported_architectures": [
-    "arm64",
-    "amd64"
-  ],
-  "created_at": 1767099334072,
-  "updated_at": 1767099334072,
   "dynamic_config": true,
-  "form_fields": []
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "Base de données - Mot de passe",
+      "required": true,
+      "env_variable": "DB_PASSWORD"
+    },
+    {
+      "type": "password",
+      "label": "Rails Secret Key",
+      "required": true,
+      "env_variable": "SECRET_KEY_BASE"
+    }
+  ]
 }
