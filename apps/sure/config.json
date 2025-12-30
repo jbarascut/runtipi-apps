@@ -1,0 +1,25 @@
+{
+  "name": "Sure",
+  "id": "sure",
+  "description": "Fork de Maybe Finance pour la gestion de finances personnelles.",
+  "short_desc": "Gestionnaire de patrimoine open-source.",
+  "categories": ["finance"],
+  "version": "1.0.0",
+  "port": 3000,
+  "exposable": true,
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "password",
+      "label": "Base de données - Mot de passe",
+      "required": true,
+      "env_variable": "DB_PASSWORD"
+    },
+    {
+      "type": "password",
+      "label": "Rails Secret Key",
+      "required": true,
+      "env_variable": "SECRET_KEY_BASE"
+    }
+  ]
+}

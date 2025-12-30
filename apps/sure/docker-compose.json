@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 2,
+  "services": [
+    {
+      "name": "sure-app",
+      "image": "ghcr.io/we-promise/sure:latest",
+      "isMain": true,
+      "internalPort": 3000,
+      "environment": [
+        { "key": "DB_HOST", "value": "sure-db" },
+        { "key": "DB_USER", "value": "sure" },
+        { "key": "DB_PASSWORD", "value": "${DB_PASSWORD}" },
+        { "key": "REDIS_URL", "value": "redis://sure-redis:6379/1" },
+        { "key": "SECRET_KEY_BASE", "value": "${SECRET_KEY_BASE}" },
+        { "key": "SELF_HOSTED", "value": "true" },
+        { "key": "RAILS_ENV", "value": "production" }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/storage",
+          "containerPath": "/rails/storage"
+        }
+      ],
+      "dependsOn": ["sure-db", "sure-redis"]
+    },
+    {
+      "name": "sure-db",
+      "image": "postgres:16-alpine",
+      "environment": [
+        { "key": "POSTGRES_DB", "value": "sure_production" },
+        { "key": "POSTGRES_USER", "value": "sure" },
+        { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" }
+      ],
+      "volumes": [
+        {
+          "hostPath": "${APP_DATA_DIR}/db",
+          "containerPath": "/var/lib/postgresql/data"
+        }
+      ]
+    },
+    {
+      "name": "sure-redis",
+      "image": "redis:7-alpine"
+    }
+  ]
+}
