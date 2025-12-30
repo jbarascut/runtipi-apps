@@ -22,10 +22,11 @@
         { "key": "SECURE_COOKIES", "value": "false" },
         { "key": "FORCE_SSL", "value": "false" },
         { "key": "RAILS_FORCE_SSL", "value": "false" },
-        { "key": "APP_URL", "value": "http://192.168.1.141:3000" },
-        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000" },
         { "key": "HTTP_X_FORWARDED_PROTO", "value": "http" },
-        { "key": "HTTP_X_FORWARDED_PORT", "value": "3000" }
+        { "key": "HTTP_X_FORWARDED_PORT", "value": "3000" },
+        { "key": "HTTP_X_FORWARDED_SSL", "value": "off" },
+        { "key": "APP_URL", "value": "http://192.168.1.141:3000" },
+        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000" }
       ],
       "volumes": [
         {
