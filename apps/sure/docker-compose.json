@@ -20,7 +20,9 @@
         { "key": "RAILS_ENV", "value": "production" },
         { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
         { "key": "SECURE_COOKIES", "value": "false" },
-        { "key": "FORCE_SSL", "value": "false" }
+        { "key": "FORCE_SSL", "value": "false" },
+        { "key": "RAILS_FORCE_SSL", "value": "false" },
+        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000" }
       ],
       "volumes": [
         {
