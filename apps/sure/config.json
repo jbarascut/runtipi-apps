@@ -5,6 +5,7 @@
   "author": "WePromise",
   "short_desc": "Gestionnaire de patrimoine open-source.",
   "categories": ["finance"],
+  "tipi_version": 2,
   "version": "latest",
   "source": "https://github.com/WePromise/sure",
   "port": 3000,
