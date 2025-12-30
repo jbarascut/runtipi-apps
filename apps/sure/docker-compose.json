@@ -6,35 +6,22 @@
       "image": "ghcr.io/we-promise/sure:latest",
       "isMain": true,
       "internalPort": 3000,
-      "labels": [
-        "tipi.exposed=true",
-        "tipi.port=3000"
-      ],
       "environment": [
         { "key": "DB_HOST", "value": "sure-db" },
-        { "key": "DB_PORT", "value": "5432" },
-        { "key": "DB_USER", "value": "sure" },
-        { "key": "POSTGRES_USER", "value": "sure" },
         { "key": "DB_PASSWORD", "value": "${DB_PASSWORD}" },
-        { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" },
-        { "key": "DB_NAME", "value": "sure_production" },
-        { "key": "REDIS_URL", "value": "redis://sure-redis:6379/1" },
         { "key": "SECRET_KEY_BASE", "value": "${SECRET_KEY_BASE}" },
         { "key": "SELF_HOSTED", "value": "true" },
         { "key": "RAILS_ENV", "value": "production" },
-        { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
-        { "key": "FORCE_SSL", "value": "false" },
+        
+        /* LA SOLUTION RADICALE */
         { "key": "RAILS_FORCE_SSL", "value": "false" },
+        { "key": "FORCE_SSL", "value": "false" },
         { "key": "SECURE_COOKIES", "value": "false" },
-        { "key": "APP_URL", "value": "http://192.168.1.141:3000" },
-        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000,http://192.168.1.141" },
-        { "key": "RAILS_TRUSTED_PROXIES", "value": "127.0.0.1,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16" }
+        /* On dit à Rails d'accepter les requêtes de n'importe où sans SSL */
+        { "key": "RAILS_TRUSTED_PROXIES", "value": "0.0.0.0/0" }
       ],
       "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/storage",
-          "containerPath": "/rails/storage"
-        }
+        { "hostPath": "${APP_DATA_DIR}/storage", "containerPath": "/rails/storage" }
       ],
       "dependsOn": ["sure-db", "sure-redis"]
     },
@@ -47,10 +34,7 @@
         { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" }
       ],
       "volumes": [
-        {
-          "hostPath": "${APP_DATA_DIR}/db",
-          "containerPath": "/var/lib/postgresql/data"
-        }
+        { "hostPath": "${APP_DATA_DIR}/db", "containerPath": "/var/lib/postgresql/data" }
       ]
     },
     {
