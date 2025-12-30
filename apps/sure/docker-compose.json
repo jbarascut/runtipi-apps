@@ -6,15 +6,15 @@
       "image": "ghcr.io/we-promise/sure:latest",
       "isMain": true,
       "internalPort": 3000,
-      "environment": [
-        { "key": "DB_HOST", "value": "sure-db" },
-        { "key": "DB_USER", "value": "sure" },
-        { "key": "DB_PASSWORD", "value": "${DB_PASSWORD}" },
-        { "key": "REDIS_URL", "value": "redis://sure-redis:6379/1" },
-        { "key": "SECRET_KEY_BASE", "value": "${SECRET_KEY_BASE}" },
-        { "key": "SELF_HOSTED", "value": "true" },
-        { "key": "RAILS_ENV", "value": "production" }
-      ],
+      "environment": {
+        "DB_HOST": "sure-db",
+        "DB_USER": "sure",
+        "DB_PASSWORD": "${DB_PASSWORD}",
+        "REDIS_URL": "redis://sure-redis:6379/1",
+        "SECRET_KEY_BASE": "${SECRET_KEY_BASE}",
+        "SELF_HOSTED": "true",
+        "RAILS_ENV": "production"
+      },
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/storage",
@@ -26,11 +26,11 @@
     {
       "name": "sure-db",
       "image": "postgres:16-alpine",
-      "environment": [
-        { "key": "POSTGRES_DB", "value": "sure_production" },
-        { "key": "POSTGRES_USER", "value": "sure" },
-        { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" }
-      ],
+      "environment": {
+        "POSTGRES_DB": "sure_production",
+        "POSTGRES_USER": "sure",
+        "POSTGRES_PASSWORD": "${DB_PASSWORD}"
+      },
       "volumes": [
         {
           "hostPath": "${APP_DATA_DIR}/db",
