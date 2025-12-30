@@ -1,6 +1,7 @@
 {
   "name": "Sure",
   "id": "sure",
+  "available": true,
   "description": "Fork de Maybe Finance pour la gestion de finances personnelles.",
   "author": "WePromise",
   "short_desc": "Gestionnaire de patrimoine open-source.",
