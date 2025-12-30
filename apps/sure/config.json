@@ -17,13 +17,15 @@
       "type": "password",
       "label": "Base de données - Mot de passe",
       "required": true,
-      "env_variable": "DB_PASSWORD"
+      "env_variable": "DB_PASSWORD",
+      "random": true
     },
     {
       "type": "password",
       "label": "Rails Secret Key",
       "required": true,
-      "env_variable": "SECRET_KEY_BASE"
+      "env_variable": "SECRET_KEY_BASE",
+      "random": true
     }
   ]
 }
