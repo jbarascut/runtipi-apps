@@ -8,15 +8,24 @@
       "internalPort": 3000,
       "environment": [
         { "key": "DB_HOST", "value": "sure-db" },
+        { "key": "DB_PORT", "value": "5432" },
+        { "key": "DB_USER", "value": "sure" },
         { "key": "DB_PASSWORD", "value": "${DB_PASSWORD}" },
+        { "key": "POSTGRES_USER", "value": "sure" },
+        { "key": "POSTGRES_PASSWORD", "value": "${DB_PASSWORD}" },
+        { "key": "DB_NAME", "value": "sure_production" },
+        { "key": "REDIS_URL", "value": "redis://sure-redis:6379/1" },
         { "key": "SECRET_KEY_BASE", "value": "${SECRET_KEY_BASE}" },
         { "key": "SELF_HOSTED", "value": "true" },
         { "key": "RAILS_ENV", "value": "production" },
+        { "key": "RAILS_SERVE_STATIC_FILES", "value": "true" },
         
-        { "key": "RAILS_FORCE_SSL", "value": "false" },
+        /* --- CORRECTIFS SSL & LOGIN (Le fameux TRUSTED_PROXIES) --- */
         { "key": "FORCE_SSL", "value": "false" },
+        { "key": "RAILS_FORCE_SSL", "value": "false" },
         { "key": "SECURE_COOKIES", "value": "false" },
-        { "key": "RAILS_TRUSTED_PROXIES", "value": "0.0.0.0/0" }
+        { "key": "RAILS_TRUSTED_PROXIES", "value": "0.0.0.0/0" },
+        { "key": "CSRF_TRUSTED_ORIGINS", "value": "http://192.168.1.141:3000,http://192.168.1.141" }
       ],
       "volumes": [
         { "hostPath": "${APP_DATA_DIR}/storage", "containerPath": "/rails/storage" }
