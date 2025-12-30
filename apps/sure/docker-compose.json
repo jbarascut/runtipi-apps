@@ -13,11 +13,9 @@
         { "key": "SELF_HOSTED", "value": "true" },
         { "key": "RAILS_ENV", "value": "production" },
         
-        /* LA SOLUTION RADICALE */
         { "key": "RAILS_FORCE_SSL", "value": "false" },
         { "key": "FORCE_SSL", "value": "false" },
         { "key": "SECURE_COOKIES", "value": "false" },
-        /* On dit à Rails d'accepter les requêtes de n'importe où sans SSL */
         { "key": "RAILS_TRUSTED_PROXIES", "value": "0.0.0.0/0" }
       ],
       "volumes": [
